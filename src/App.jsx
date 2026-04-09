@@ -9,6 +9,7 @@ import Fare from './pages/Fare'
 import Tracking from './pages/Tracking'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Footer from './components/Footer'
 
 function App() {
   
@@ -16,7 +17,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Home />
+      {/* <Home /> */}
+      <Navbar/>
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -27,6 +29,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      <Footer/>
 
     </BrowserRouter>
     </>

@@ -8,3 +8,12 @@
 body {
   font-family: "Manrope", sans-serif;
 }
+
+/* Import this so the map tiles align correctly */
+@import "leaflet/dist/leaflet.css";
+
+/* Give your map a specific height, or it will be 0px tall */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}

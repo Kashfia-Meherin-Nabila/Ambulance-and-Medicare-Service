@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ac",
+    "title": "Premium AC Ambulance",
+    "price": "Starts from ৳2000",
+    "features": ["Climate Controlled", "Oxygen Included", "Bed for Patient"],
+    "icon": "Wind"
+  },
+  {
+    "id": "non-ac",
+    "title": "Standard Non-AC",
+    "price": "Starts from ৳1200",
+    "features": ["Cost Effective", "Quick Dispatch", "Wide Coverage"],
+    "icon": "Activity"
+  },
+  {
+    "id": "icu",
+    "title": "Life Support (ICU)",
+    "price": "Starts from ৳8000",
+    "features": ["Ventilator", "Cardiac Monitor", "Expert Medic"],
+    "icon": "HeartPulse"
+  },
+  {
+    "id": "freezer",
+    "title": "Freezing Carrier",
+    "price": "Starts from ৳5000",
+    "features": ["Dignified Transport", "-5 to -22°C", "Long Distance"],
+    "icon": "Snowflake"
+  }
+]
