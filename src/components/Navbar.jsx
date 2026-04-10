@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className="bg-white shadow-md px-8 py-4 flex justify-between items-center">
-      
       {/* Logo */}
       <div className="flex items-center gap-2">
         <span className="text-3xl">🚑</span>
@@ -14,10 +13,47 @@ const Navbar = () => {
 
       {/* Menu */}
       <div className="hidden md:flex gap-6 text-gray-700 font-semibold">
-        <Link to="/" className="hover:text-blue-600 hover:border-b border-blue-600">Home</Link>
-        <Link to="/requestAmbulance" className="hover:text-blue-600 hover:border-b border-blue-600">Request-Ambulance</Link>
-        <Link to="/tracking" className="hover:text-blue-600 hover:border-b border-blue-600">Tracking</Link>
-        <Link to="/hospitalSelection" className="hover:text-blue-600 hover:border-b border-blue-600">Hospitals</Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `hover:text-blue-600 ${
+              isActive ? "border-b border-blue-600 text-blue-600" : ""
+            }`
+          }
+        >
+          Home
+        </NavLink>
+
+        <NavLink
+          to="/requestAmbulance"
+          className={({ isActive }) =>
+            `hover:text-blue-600 ${
+              isActive ? "border-b border-blue-600 text-blue-600" : ""
+            }`
+          }
+        >
+          Request-Ambulance
+        </NavLink>
+        <NavLink
+          to="/tracking"
+          className={({ isActive }) =>
+            `hover:text-blue-600 ${
+              isActive ? "border-b border-blue-600 text-blue-600" : ""
+            }`
+          }
+        >
+          Tracking
+        </NavLink>
+        <NavLink
+          to="/hospitalSelection"
+          className={({ isActive }) =>
+            `hover:text-blue-600 ${
+              isActive ? "border-b border-blue-600 text-blue-600" : ""
+            }`
+          }
+        >
+          Hospitals
+        </NavLink>
       </div>
 
       {/* Buttons */}

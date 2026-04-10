@@ -61,7 +61,7 @@ const HospitalSelection = () => {
               className="bg-white rounded-[2.5rem] border border-slate-100 p-2 hover:shadow-2xl hover:shadow-blue-100 transition-all duration-500 group"
             >
               {/* Image Area */}
-              <div className="relative h-52 w-full overflow-hidden rounded-[2rem]">
+              <div className="relative h-52 w-full overflow-hidden rounded-4xl">
                 <img 
                   src={hospital.image} 
                   alt={hospital.name} 
