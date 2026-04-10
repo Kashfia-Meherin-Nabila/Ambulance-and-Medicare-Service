@@ -58,12 +58,17 @@ const Navbar = () => {
 
       {/* Buttons */}
       <div className="flex gap-3">
-        <button className="px-4 py-2 border font-semibold border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50">
+        <Link
+        to="/login"
+        className="px-4 py-2 border font-semibold border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50">
           Login
-        </button>
-        <button className="px-4 py-2 font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+        </Link>
+        <Link
+          to="/register"
+          className="px-4 py-2 font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        >
           Sign Up
-        </button>
+        </Link>
       </div>
     </nav>
   );
