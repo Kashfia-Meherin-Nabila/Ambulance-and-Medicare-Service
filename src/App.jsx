@@ -51,7 +51,7 @@ function App() {
           />
 
           <Route
-            path="/driver-dashboard"
+            path="/medical-dashboard"
             element={
               <PrivateRoute role="driver">
                 <MedicalDashboard />
@@ -60,7 +60,7 @@ function App() {
           />
 
           <Route
-            path="/driver-dashboard"
+            path="/hospital-dashboard"
             element={
               <PrivateRoute role="driver">
                 <HospitalDashboard />

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "#AMB-1023",
+    "from": "Dhanmondi",
+    "to": "Dhaka Medical College Hospital",
+    "date": "Apr 9, 2026",
+    "status": "Completed",
+    "fare": "৳320"
+  },
+  {
+    "id": "#AMB-1018",
+    "from": "Gulshan",
+    "to": "Square Hospital",
+    "date": "Apr 3, 2026",
+    "status": "Completed",
+    "fare": "৳480"
+  },
+  {
+    "id": "#AMB-0997",
+    "from": "Mirpur",
+    "to": "Popular Medical Centre",
+    "date": "Mar 28, 2026",
+    "status": "Cancelled",
+    "fare": "—"
+  },
+  {
+    "id": "#AMB-0981",
+    "from": "Uttara",
+    "to": "Kurmitola General Hospital",
+    "date": "Mar 15, 2026",
+    "status": "Completed",
+    "fare": "৳210"
+  },
+  {
+    "id": "#AMB-0974",
+    "from": "Bashundhara",
+    "to": "Apollo Hospitals Dhaka",
+    "date": "Mar 10, 2026",
+    "status": "Completed",
+    "fare": "৳650"
+  }
+]

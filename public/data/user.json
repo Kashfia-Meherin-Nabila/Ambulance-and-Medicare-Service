@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "email": "patient@gmail.com",
+    "password": "123456",
+    "role": "patient",
+    "name": "Patient One"
+  },
+  {
+    "id": 2,
+    "email": "driver@gmail.com",
+    "password": "123456",
+    "role": "driver",
+    "name": "Driver One"
+  },
+  {
+    "id": 3,
+    "email": "hospital@gmail.com",
+    "password": "123456",
+    "role": "hospital",
+    "name": "Hospital Admin"
+  }
+]

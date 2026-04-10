@@ -11,6 +11,8 @@ const Register = () => {
     role: "patient",
   });
 
+  const [error, setError] = useState("");
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -18,119 +20,106 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
 
-    try {
-      const res = await fetch("http://localhost/ambulance-api/register.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-      const data = await res.json();
+    // check duplicate email
+    const userExists = existingUsers.find(
+      (u) => u.email === formData.email
+    );
 
-      if (data.message) {
-        alert("Registration Successful ✅");
-        navigate("/login");
-      } else {
-        alert("Something went wrong ❌");
-      }
-    } catch (error) {
-      console.error(error);
+    if (userExists) {
+      setError("Email already exists ❌");
+      return;
     }
+
+    const newUser = {
+      id: Date.now(),
+      ...formData,
+    };
+
+    const updatedUsers = [...existingUsers, newUser];
+
+    // save users list
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    // auto login
+    localStorage.setItem("user", JSON.stringify(newUser));
+
+    // redirect
+    const routes = {
+      patient: "/patient-dashboard",
+      driver: "/driver-dashboard",
+      hospital: "/hospital-dashboard",
+      medical: "/medical-dashboard",
+    };
+
+    navigate(routes[newUser.role] || "/");
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200">
       <div className="card w-full max-w-md shadow-xl bg-base-100">
         <div className="card-body">
-          <h2 className="text-2xl font-bold text-center">Create Account 🚑</h2>
+
+          <h2 className="text-2xl font-bold text-center">
+            Create Account 🚑
+          </h2>
+
+          {error && (
+            <p className="text-red-500 text-center">{error}</p>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-4 mt-4">
 
-            {/* Name */}
-            <div>
-              <label className="label">
-                <span className="label-text">Full Name</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                className="input input-bordered w-full"
-                required
-                onChange={handleChange}
-              />
-            </div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              className="input input-bordered w-full"
+              onChange={handleChange}
+              required
+            />
 
-            {/* Email */}
-            <div>
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                className="input input-bordered w-full"
-                required
-                onChange={handleChange}
-              />
-            </div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="input input-bordered w-full"
+              onChange={handleChange}
+              required
+            />
 
-            {/* Password */}
-            <div>
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                className="input input-bordered w-full"
-                required
-                onChange={handleChange}
-              />
-            </div>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="input input-bordered w-full"
+              onChange={handleChange}
+              required
+            />
 
-            {/* Role */}
-            <div>
-              <label className="label">
-                <span className="label-text">Register As</span>
-              </label>
-              <select
-                name="role"
-                className="select select-bordered w-full"
-                onChange={handleChange}
-                defaultValue="patient"
-              >
-                <option value="patient">Patient / General Public</option>
-                <option value="driver">Ambulance Driver</option>
-                <option value="medical">Medical Staff</option>
-                <option value="hospital">Hospital</option>
-              </select>
-            </div>
+            <select
+              name="role"
+              className="select select-bordered w-full"
+              onChange={handleChange}
+              value={formData.role}
+            >
+              <option value="patient">Patient</option>
+              <option value="driver">Driver</option>
+              <option value="medical">Medical</option>
+              <option value="hospital">Hospital</option>
+            </select>
 
-            {/* Button */}
-            <button className="btn btn-primary w-full mt-2">
+            <button className="btn btn-primary w-full">
               Register
             </button>
 
           </form>
 
-          {/* Redirect */}
-          <p className="text-center mt-4 text-sm">
-            Already have an account?{" "}
-            <span
-              className="text-primary cursor-pointer"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </span>
-          </p>
         </div>
       </div>
     </div>

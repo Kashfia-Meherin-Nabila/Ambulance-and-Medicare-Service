@@ -9,111 +9,109 @@ const Login = () => {
     password: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
+    setError("");
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
 
-    try {
-      const res = await fetch("http://localhost/ambulance-api/login.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-      const data = await res.json();
+    const user = users.find(
+      (u) =>
+        u.email === formData.email &&
+        u.password === formData.password
+    );
 
-      if (data.id) {
-        // Save user
-        localStorage.setItem("user", JSON.stringify(data));
-
-        // Role-based redirect
-        if (data.role === "patient") navigate("/patient-dashboard");
-        else if (data.role === "driver") navigate("/driver-dashboard");
-        else if (data.role === "medical") navigate("/medical-dashboard");
-        else if (data.role === "hospital") navigate("/hospital-dashboard");
-        else navigate("/");
-
-      } else {
-        alert(data.error || "Login failed ❌");
-      }
-    } catch (error) {
-      console.error(error);
+    if (!user) {
+      setError("Invalid email or password ❌");
+      setLoading(false);
+      return;
     }
+
+    // save session
+    localStorage.setItem("user", JSON.stringify(user));
+
+    const routes = {
+      patient: "/patient-dashboard",
+      driver: "/driver-dashboard",
+      hospital: "/hospital-dashboard",
+      medical: "/medical-dashboard",
+    };
+
+    navigate(routes[user.role] || "/");
+
+    setLoading(false);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-base-200">
-      <div className="card w-full max-w-md shadow-xl bg-base-100">
-        <div className="card-body">
-          <h2 className="text-2xl font-bold text-center">Welcome Back 🚑</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 px-4">
 
-          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8">
 
-            {/* Email */}
-            <div>
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                className="input input-bordered w-full"
-                required
-                onChange={handleChange}
-              />
-            </div>
+        <h1 className="text-3xl font-bold text-center mb-2">
+          🚑 Ambulance System
+        </h1>
 
-            {/* Password */}
-            <div>
-              <label className="label flex justify-between">
-                <span className="label-text">Password</span>
-                <span
-                  className="text-sm text-blue-500 cursor-pointer"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </span>
-              </label>
-              <input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Enter your password"
-                className="input input-bordered w-full"
-                required
-                onChange={handleChange}
-              />
-            </div>
+        <p className="text-center text-gray-500 mb-6">
+          Login to continue
+        </p>
 
-            {/* Button */}
-            <button className="btn btn-primary w-full mt-2">
-              Login
-            </button>
+        {error && (
+          <div className="bg-red-100 text-red-600 p-2 rounded mb-4 text-center">
+            {error}
+          </div>
+        )}
 
-          </form>
+        <form onSubmit={handleSubmit} className="space-y-4">
 
-          {/* Redirect */}
-          <p className="text-center mt-4 text-sm">
-            Don’t have an account?{" "}
-            <span
-              className="text-primary cursor-pointer"
-              onClick={() => navigate("/register")}
-            >
-              Register
-            </span>
-          </p>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="input input-bordered w-full"
+            onChange={handleChange}
+            required
+          />
 
-        </div>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="input input-bordered w-full"
+            onChange={handleChange}
+            required
+          />
+
+          <button
+            className="btn btn-primary w-full"
+            disabled={loading}
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
+
+        </form>
+
+        <p className="text-center mt-4 text-sm">
+          Don’t have an account?{" "}
+          <span
+            onClick={() => navigate("/register")}
+            className="text-blue-600 cursor-pointer"
+          >
+            Register
+          </span>
+        </p>
+
       </div>
     </div>
   );
