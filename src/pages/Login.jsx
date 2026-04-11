@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../api/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -7,6 +8,7 @@ const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    role: "patient",
   });
 
   const [error, setError] = useState("");
@@ -14,49 +16,46 @@ const Login = () => {
 
   const handleChange = (e) => {
     setError("");
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+    try {
+      const result = await loginUser({
+        email: formData.email,
+        password: formData.password,
+        role: formData.role,
+      });
 
-    const user = users.find(
-      (u) =>
-        u.email === formData.email &&
-        u.password === formData.password
-    );
+      if (result.success) {
+        // save session
+        localStorage.setItem("user", JSON.stringify(result.user));
+        localStorage.setItem("role", result.role);
 
-    if (!user) {
-      setError("Invalid email or password ❌");
+        const routes = {
+          patient: "/patient-dashboard",
+          driver: "/driver-dashboard",
+          hospital: "/hospital-dashboard",
+          medical: "/medical-dashboard",
+        };
+
+        navigate(routes[result.role] || "/");
+      } else {
+        setError(result.message || "Invalid email or password ❌");
+      }
+    } catch {
+      setError("Server error. Make sure XAMPP is running ❌");
+    } finally {
       setLoading(false);
-      return;
     }
-
-    // save session
-    localStorage.setItem("user", JSON.stringify(user));
-
-    const routes = {
-      patient: "/patient-dashboard",
-      driver: "/driver-dashboard",
-      hospital: "/hospital-dashboard",
-      medical: "/medical-dashboard",
-    };
-
-    navigate(routes[user.role] || "/");
-
-    setLoading(false);
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 px-4">
-
       <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8">
 
         <h1 className="text-3xl font-bold text-center mb-2">
@@ -93,6 +92,17 @@ const Login = () => {
             required
           />
 
+          {/* Role Selector */}
+          <select
+            name="role"
+            className="select select-bordered w-full"
+            onChange={handleChange}
+            value={formData.role}
+          >
+            <option value="patient">Patient</option>
+            <option value="driver">Driver</option>
+          </select>
+
           <button
             className="btn btn-primary w-full"
             disabled={loading}
@@ -103,7 +113,7 @@ const Login = () => {
         </form>
 
         <p className="text-center mt-4 text-sm">
-          Don’t have an account?{" "}
+          Don't have an account?{" "}
           <span
             onClick={() => navigate("/register")}
             className="text-blue-600 cursor-pointer"

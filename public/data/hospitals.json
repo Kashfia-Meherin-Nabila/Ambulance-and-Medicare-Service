@@ -1,6 +1,8 @@
 [
   {
     "id": 1,
+    "lat": 23.8583, 
+    "lng": 90.2667,
     "name": "Enam Medical College & Hospital",
     "location": "Savar, Dhaka",
     "rating": 4.8,
@@ -13,6 +15,8 @@
   },
   {
     "id": 2,
+    "lat": 23.8041, 
+    "lng": 90.3630,
     "name": "National Heart Foundation",
     "location": "Mirpur, Dhaka",
     "rating": 4.9,
@@ -25,6 +29,8 @@
   },
   {
     "id": 3,
+    "lat": 23.8134, 
+    "lng": 90.4270,
     "name": "Evercare Hospital Dhaka",
     "location": "Bashundhara R/A",
     "rating": 4.7,
@@ -37,6 +43,8 @@
   },
   {
     "id": 4,
+    "lat": 23.7620, 
+    "lng": 90.3750,
     "name": "Dhaka Shishu Hospital",
     "location": "Sher-e-Bangla Nagar",
     "rating": 4.6,
@@ -49,6 +57,8 @@
   },
   {
     "id": 5,
+    "lat": 23.7270, 
+    "lng": 90.3960,
     "name": "Sheikh Hasina Burn Institute",
     "location": "Chankharpul, Dhaka",
     "rating": 4.9,
@@ -61,6 +71,8 @@
   },
   {
     "id": 6,
+    "lat": 23.7930, 
+    "lng": 90.4150,
     "name": "United Hospital",
     "location": "Gulshan, Dhaka",
     "rating": 4.7,
@@ -73,6 +85,8 @@
   },
   {
     "id": 7,
+    "lat": 23.7510, 
+    "lng": 90.3870,
     "name": "Square Hospital",
     "location": "Panthapath, Dhaka",
     "rating": 4.8,
@@ -85,6 +99,8 @@
   },
   {
     "id": 8,
+    "lat": 23.7460, 
+    "lng": 90.3730,
     "name": "LabAid Specialized Hospital",
     "location": "Dhanmondi, Dhaka",
     "rating": 4.6,
@@ -97,6 +113,8 @@
   },
   {
     "id": 9,
+    "lat": 23.7390, 
+    "lng": 90.3960,
     "name": "BIRDEM General Hospital",
     "location": "Shahbag, Dhaka",
     "rating": 4.5,
@@ -109,6 +127,8 @@
   },
   {
     "id": 10,
+    "lat": 23.7760, 
+    "lng": 90.3780,
     "name": "National Institute of Neurosciences",
     "location": "Agargaon, Dhaka",
     "rating": 4.8,
@@ -121,6 +141,8 @@
   },
   {
     "id": 11,
+    "lat": 23.7480, 
+    "lng": 90.3760,
     "name": "Ibn Sina Specialized Hospital",
     "location": "Dhanmondi, Dhaka",
     "rating": 4.5,
@@ -133,6 +155,8 @@
   },
   {
     "id": 12,
+    "lat": 23.7200, 
+    "lng": 90.4500,
     "name": "Apollo Imperial Hospital",
     "location": "Chittagong Road Area",
     "rating": 4.7,
@@ -145,6 +169,8 @@
   },
   {
     "id": 13,
+    "lat": 23.8060, 
+    "lng": 90.3580,
     "name": "Delta Hospital Ltd.",
     "location": "Mirpur, Dhaka",
     "rating": 4.4,
@@ -157,6 +183,8 @@
   },
   {
     "id": 14,
+    "lat": 23.8760, 
+    "lng": 90.3990,
     "name": "Ahsania Mission Cancer Hospital",
     "location": "Uttara, Dhaka",
     "rating": 4.6,
@@ -169,6 +197,8 @@
   },
   {
     "id": 15,
+    "lat": 23.8900, 
+    "lng": 90.2820,
     "name": "Japan East West Medical College",
     "location": "Ashulia, Savar",
     "rating": 4.3,
@@ -181,6 +211,8 @@
   },
   {
     "id": 16,
+    "lat": 23.8530, 
+    "lng": 90.2710,
     "name": "Savar Primery Health Center",
     "location": "Savar Bazar",
     "rating": 4.1,
@@ -193,6 +225,8 @@
   },
   {
     "id": 17,
+    "lat": 23.7520, 
+    "lng": 90.3880,
     "name": "BRB Hospitals Ltd.",
     "location": "Panthapath, Dhaka",
     "rating": 4.6,
@@ -205,6 +239,8 @@
   },
   {
     "id": 18,
+    "lat": 23.7450, 
+    "lng": 90.3720,
     "name": "Popular Specialized Hospital",
     "location": "Dhanmondi, Dhaka",
     "rating": 4.4,
@@ -217,6 +253,8 @@
   },
   {
     "id": 19,
+    "lat": 23.7780, 
+    "lng": 90.3760,
     "name": "National Eye Care Institute",
     "location": "Agargaon, Dhaka",
     "rating": 4.7,
@@ -229,6 +267,8 @@
   },
   {
     "id": 20,
+    "lat": 23.7440, 
+    "lng": 90.3710,
     "name": "Central Hospital Ltd.",
     "location": "Dhanmondi, Dhaka",
     "rating": 4.3,
@@ -241,6 +281,8 @@
   },
   {
     "id": 21,
+    "lat": 23.8070, 
+    "lng": 90.3520,
     "name": "Kidney Foundation Hospital",
     "location": "Mirpur-2, Dhaka",
     "rating": 4.8,
@@ -253,6 +295,8 @@
   },
   {
     "id": 22,
+    "lat": 23.7400, 
+    "lng": 90.3970,
     "name": "Bangabandhu Sheikh Mujib Med. University",
     "location": "Shahbag, Dhaka",
     "rating": 4.6,
@@ -265,6 +309,8 @@
   },
   {
     "id": 23,
+    "lat": 23.7800, 
+    "lng": 90.4030,
     "name": "Universal Medical College",
     "location": "Mohakhali, Dhaka",
     "rating": 4.4,
@@ -277,6 +323,8 @@
   },
   {
     "id": 24,
+    "lat": 23.7660, 
+    "lng": 90.3970,
     "name": "Impulse Hospital",
     "location": "Tejgaon, Dhaka",
     "rating": 4.5,
@@ -289,6 +337,8 @@
   },
   {
     "id": 25,
+    "lat": 23.8720, 
+    "lng": 90.3940,
     "name": "Uttara Adhunik Medical College",
     "location": "Uttara, Dhaka",
     "rating": 4.2,
